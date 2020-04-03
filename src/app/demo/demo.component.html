@@ -1,0 +1,16 @@
+<h1>Add</h1>
+<input type="number" [(ngModel)]="no1">
+<input type="number" [(ngModel)]="no2">
+<button (click)="onAddClick()">Add</button>
+<h1>{{res}}</h1>
+<hr>
+<input type="number" #input1>
+<input type="number" #input2>
+<button (click)="onAdd1Click(input1.value,input2.value)">Add using template binding</button>
+<h1>{{ans}}</h1>
+<hr>
+<input [(ngModel)]="str">
+<h1>{{str}}</h1>
+
+<input (keyup)="0" #demoinput>
+{{demoinput.value}}
