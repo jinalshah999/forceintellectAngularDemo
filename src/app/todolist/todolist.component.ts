@@ -4,7 +4,7 @@ import { Todo } from "./todo";
 @Component({
   selector: "app-todolist",
   templateUrl: "./todolist.component.html",
-  styleUrls: ["./todolist.component.css"]
+  styleUrls: ["./todolist.component.css"],
 })
 export class TodolistComponent implements OnInit {
   Id: string = "";
@@ -13,8 +13,13 @@ export class TodolistComponent implements OnInit {
   flag: boolean = false;
   todos: Todo[] = [
     new Todo("1", "push your code to github", "done"),
-    new Todo("2", "Email to your manager", "pending")
+    new Todo("2", "Email to your manager", "pending"),
   ];
+  obj = {
+    Id: "",
+    Title: "",
+    Status: "done",
+  };
   statusarr: string[] = ["done", "pending"];
   constructor() {}
 
@@ -33,13 +38,10 @@ export class TodolistComponent implements OnInit {
     this.flag = true;
   }
   onSaveTodo(): void {
-    this.todos.push(new Todo(this.Id, this.Title, this.Status));
+    //this.todos.push(new Todo(this.Id, this.Title, this.Status));
+    this.todos.push(this.obj);
     this.clearValues();
     this.flag = false;
   }
-  clearValues(): void {
-    this.Id = "";
-    this.Title = "";
-    this.Status = "pending";
-  }
+  clearValues(): void {}
 }

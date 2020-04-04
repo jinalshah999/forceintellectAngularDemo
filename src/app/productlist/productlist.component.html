@@ -1,0 +1,10 @@
+<app-addproduct></app-addproduct>
+<p>productlist works!</p>
+
+<h1>I am data from another service {{str}}</h1>
+<table class="table">
+  <tr *ngFor="let item of products">
+    <td>{{item.pid}}</td>
+    <td>{{item.pname}}</td>
+  </tr>
+</table>
