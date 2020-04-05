@@ -1,10 +1,24 @@
-<app-addproduct></app-addproduct>
-<p>productlist works!</p>
+<!-- <app-addproduct></app-addproduct> -->
 
-<h1>I am data from another service {{str}}</h1>
-<table class="table">
-  <tr *ngFor="let item of products">
-    <td>{{item.pid}}</td>
-    <td>{{item.pname}}</td>
-  </tr>
-</table>
+
+<!-- <h1>I am data from another service {{str}}</h1> -->
+
+
+<div class="container">
+  <div class="row">
+    <h1>productlist works!</h1>
+  </div>
+  <div class="col-md-3">
+    <app-addproduct> </app-addproduct>
+    <app-sidebar [name]="cat_name" (myEvent)="onMyEvent($event)"></app-sidebar>
+  </div>
+  <div #id1 class="col-md-9">
+    <h1>Content</h1>
+    <table class="table">
+      <tr *ngFor="let item of products">
+        <td>{{item.pid}}</td>
+        <td>{{item.pname}}</td>
+      </tr>
+    </table>
+  </div>
+</div>

@@ -8,6 +8,8 @@ import { ProductlistComponent } from "./productlist/productlist.component";
 import { AddproductComponent } from "./productlist/addproduct/addproduct.component";
 import { HighlightDirective } from './highlight.directive';
 import { DemoelemetDirective } from './productlist/demoelemet.directive';
+import { CredticardDirective } from './credticard.directive';
+import { SidebarComponent } from './productlist/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { DemoelemetDirective } from './productlist/demoelemet.directive';
     AddproductComponent,
     HighlightDirective,
     DemoelemetDirective,
+    CredticardDirective,
+    SidebarComponent,
   ], //c,d,p
   imports: [BrowserModule, FormsModule],
   providers: [],
