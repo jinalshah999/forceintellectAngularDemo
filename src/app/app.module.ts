@@ -10,6 +10,8 @@ import { HighlightDirective } from './highlight.directive';
 import { DemoelemetDirective } from './productlist/demoelemet.directive';
 import { CredticardDirective } from './credticard.directive';
 import { SidebarComponent } from './productlist/sidebar/sidebar.component';
+import { MessageComponent } from './message/message.component';
+import { MessagewraperComponent } from './messagewraper/messagewraper.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { SidebarComponent } from './productlist/sidebar/sidebar.component';
     DemoelemetDirective,
     CredticardDirective,
     SidebarComponent,
+    MessageComponent,
+    MessagewraperComponent,
   ], //c,d,p
   imports: [BrowserModule, FormsModule],
   providers: [],

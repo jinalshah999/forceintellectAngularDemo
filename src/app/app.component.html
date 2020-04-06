@@ -13,4 +13,23 @@
 
 <!-- <app-productlist></app-productlist> -->
 
-<app-demo></app-demo>
+<!-- <app-demo></app-demo> -->
+
+<div class="container">
+  <h1>App Component</h1>
+  <!-- <app-message>
+    <h1>i am passed from app component</h1>
+    <button class="btn">Click Me</button>
+    <button class="btn1">Save Me</button>
+    <p para>i am demo text</p>
+  </app-message> -->
+
+  <!-- <app-message [str]="'hello'"></app-message> -->
+
+  <!-- <app-message *ngFor="let item of arr" [str]="item"></app-message> -->
+
+  <app-messagewraper>
+    <app-message *ngFor="let item of arr" [str]="item"></app-message>
+  </app-messagewraper>
+
+</div>
