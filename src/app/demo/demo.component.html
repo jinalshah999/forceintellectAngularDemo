@@ -1,9 +1,12 @@
 <div class="container">
+
+  <input #ip1 type="number" (keyup)="0">
+  <h1>{{ip1.value | dbl }}</h1>
   <p #id1>i am demo text</p>
   <h1>{{str | titlecase }}</h1>
-  <h1>{{no1 |number:'2.2-2' }}</h1>
+  <h1>{{no1 | number:'2.2-2' }}</h1>
   <h1>{{no1 | currency:'INR':'symbol-narrow':'3.3-5' }}</h1>
-  <h1>{{dt | date :'dd/MM/yy' }}</h1>
+  <h1>{{dt  | date :'dd/MM/yy' }}</h1>
 
   <h1>{{object | json}}</h1>
   <h1>Add</h1>
