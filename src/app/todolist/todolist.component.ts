@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Router } from "@angular/router";
 import { Todo } from "./todo";
 import { TododataService } from "./tododata.service";
 import { Subscription } from "rxjs";
@@ -9,14 +10,9 @@ import { Subscription } from "rxjs";
   styleUrls: ["./todolist.component.css"],
 })
 export class TodolistComponent implements OnInit, OnDestroy {
-  Id: string = "";
-  Title: string = "";
-  Status: string = "pending";
-  flag: boolean = false;
   todos: Todo[] = [];
-  statusarr: string[] = ["done", "pending"];
   sub: Subscription;
-  constructor(private _tododata: TododataService) {}
+  constructor(private _tododata: TododataService, private _router: Router) {}
 
   ngOnDestroy() {
     this.sub.unsubscribe();
@@ -36,7 +32,6 @@ export class TodolistComponent implements OnInit, OnDestroy {
     );
   }
   onDeleteClick(item: Todo): void {
-    //
     this._tododata.deleteTodo(item.Id).subscribe(
       (res: any) => {
         console.log(res);
@@ -53,24 +48,7 @@ export class TodolistComponent implements OnInit, OnDestroy {
     );
   }
   onEditClick(item: Todo): void {
-    if (item.Status === "done") {
-      item.Status = "pending";
-    } else {
-      item.Status = "done";
-    }
+    console.log(item);
+    this._router.navigate(["/edittodo", item.Id]);
   }
-  onAddTodoClick(): void {
-    this.flag = true;
-  }
-  onSaveTodo(): void {
-    let obj = new Todo(this.Id, this.Title, this.Status);
-    console.log(obj);
-    this._tododata.addTodo(obj).subscribe((res: any) => {
-      console.log(res);
-      this.todos.push(obj);
-      this.clearValues();
-      this.flag = false;
-    });
-  }
-  clearValues(): void {}
 }

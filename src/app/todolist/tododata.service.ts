@@ -9,6 +9,9 @@ export class TododataService {
   private url: string = environment.url + "tasks/";
   constructor(private _http: HttpClient) {}
 
+  getTodoById(id: string) {
+    return this._http.get<Todo[]>(this.url + id);
+  }
   getAllTodos() {
     return this._http.get<Todo[]>(this.url);
   }

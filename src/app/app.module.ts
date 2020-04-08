@@ -15,7 +15,11 @@ import { MessageComponent } from "./message/message.component";
 import { MessagewraperComponent } from "./messagewraper/messagewraper.component";
 import { DblPipe } from "./dbl.pipe";
 import { FilterPipe } from "./todolist/filter.pipe";
-
+import { routingArr } from "./app.routing";
+import { HeaderComponent } from './header/header.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { AddtodoComponent } from './todolist/addtodo/addtodo.component';
+import { EdittodoComponent } from './todolist/edittodo/edittodo.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,8 +35,12 @@ import { FilterPipe } from "./todolist/filter.pipe";
     MessagewraperComponent,
     DblPipe,
     FilterPipe,
+    HeaderComponent,
+    PagenotfoundComponent,
+    AddtodoComponent,
+    EdittodoComponent,
   ], //c,d,p
-  imports: [BrowserModule, FormsModule, HttpClientModule],
+  imports: [BrowserModule, FormsModule, HttpClientModule, routingArr],
   providers: [],
   bootstrap: [AppComponent],
 })
