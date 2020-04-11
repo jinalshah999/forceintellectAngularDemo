@@ -18,10 +18,13 @@ export class ProductlistComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.products = this._prodData.getAllProducts();
+    //this.products = this._prodData.getAllProducts();
+    this._prodData.getAllProducts().subscribe((res) => {
+      this.products = res;
+    });
     this.str = this._demoData.helloworld();
   }
   onMyEvent(val) {
-    this.products = this.products.filter((x) => x.pname.startsWith(val));
+    //this.products = this.products.filter((x) => x.pname.startsWith(val));
   }
 }

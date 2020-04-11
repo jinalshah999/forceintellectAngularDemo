@@ -1,6 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { AppComponent } from "./app.component";
 import { DemoComponent } from "./demo/demo.component";
@@ -16,10 +16,11 @@ import { MessagewraperComponent } from "./messagewraper/messagewraper.component"
 import { DblPipe } from "./dbl.pipe";
 import { FilterPipe } from "./todolist/filter.pipe";
 import { routingArr } from "./app.routing";
-import { HeaderComponent } from './header/header.component';
-import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
-import { AddtodoComponent } from './todolist/addtodo/addtodo.component';
-import { EdittodoComponent } from './todolist/edittodo/edittodo.component';
+import { HeaderComponent } from "./header/header.component";
+import { PagenotfoundComponent } from "./pagenotfound/pagenotfound.component";
+import { AddtodoComponent } from "./todolist/addtodo/addtodo.component";
+import { EdittodoComponent } from "./todolist/edittodo/edittodo.component";
+import { UserSignupComponent } from "./user-signup/user-signup.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,8 +40,15 @@ import { EdittodoComponent } from './todolist/edittodo/edittodo.component';
     PagenotfoundComponent,
     AddtodoComponent,
     EdittodoComponent,
+    UserSignupComponent,
   ], //c,d,p
-  imports: [BrowserModule, FormsModule, HttpClientModule, routingArr],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    routingArr,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

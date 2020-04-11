@@ -1,21 +1,42 @@
 import { Injectable } from "@angular/core";
 import { Product } from "./product";
+import { environment } from "src/environments/environment";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Injectable({
   providedIn: "root",
 })
 export class ProductdataService {
-  constructor() {}
+  private url: string = environment.url + "products/";
+  constructor(private _http: HttpClient) {}
 
-  products: Product[] = [new Product("1", "xyz"), new Product("2", "abc")];
-
-  getAllProducts(): Product[] {
-    return this.products;
+  getProductById(id: string) {
+    return this._http.get<Product[]>(this.url + id);
   }
-  addProduct(item: Product): void {
-    this.products.push(item);
+  getAllProducts() {
+    return this._http.get<Product[]>(this.url);
   }
-  deleteProduct(item: Product): void {
-    this.products.splice(this.products.indexOf(item), 1);
+  deleteProduct(id: string) {
+    let h = new HttpHeaders().set(
+      environment.headerName,
+      environment.headerValue
+    );
+    return this._http.delete(this.url + id, { headers: h });
+  }
+  addProduct(item: Product) {
+    let body = JSON.stringify(item);
+    let h = new HttpHeaders().set(
+      environment.headerName,
+      environment.headerValue
+    );
+    return this._http.post(this.url, body, { headers: h });
+  }
+  editProduct(item: Product) {
+    let body = JSON.stringify(item);
+    let h = new HttpHeaders().set(
+      environment.headerName,
+      environment.headerValue
+    );
+    return this._http.put(this.url + item.pro_id, body, { headers: h });
   }
 }

@@ -14,7 +14,10 @@ export class AddproductComponent implements OnInit {
   constructor(private _prodData: ProductdataService) {}
 
   ngOnInit(): void {}
-  onAddProduct(): void {
-    this._prodData.addProduct(new Product(this.pid, this.pname));
+  onProductAdd(f) {
+    console.log(f);
+    this._prodData.addProduct(f.value).subscribe((res: any) => {
+      console.log(res);
+    });
   }
 }

@@ -1,0 +1,62 @@
+<p>user-signup works!</p>
+<div class="container">
+  <form (ngSubmit)="onUserSubmit()" [formGroup]="user_signup">
+    <div class="form-group">
+      <label>Enter User Name</label>
+      <input formControlName="user_name" class="form-control" placeholder="Enter username">
+      <label class="alert alert-danger"
+        *ngIf="!user_signup.get('user_name').pristine && user_signup.get('user_name').hasError('required')  ">required</label>
+      <label class="alert alert-danger"
+        *ngIf="!user_signup.get('user_name').pristine && user_signup.get('user_name').hasError('minlength') ">minLength</label>
+      <label class=" alert alert-danger"
+        *ngIf="!user_signup.get('user_name').pristine && user_signup.get('user_name').hasError('pattern')">Pattern</label>
+      <label class=" alert alert-danger"
+        *ngIf="!user_signup.get('user_name').pristine && user_signup.get('user_name').hasError('nameNotAllowed')">custom
+        Error</label>
+    </div>
+    <div class="form-group">
+      <input type="radio" formControlName="user_notification" value="email">Email
+      <input type="radio" formControlName="user_notification" value="phone">Phone
+    </div>
+    <div class=" form-group">
+      <label>Enter User email</label>
+      <input formControlName="user_email" class="form-control" placeholder="Enter email">
+      <label class="alert alert-danger"
+        *ngIf="!user_signup.get('user_email').pristine && user_signup.get('user_email').hasError('required')  ">required</label>
+      <label class="alert alert-danger"
+        *ngIf="!user_signup.get('user_email').pristine && user_signup.get('user_email').hasError('email')  ">email</label>
+
+    </div>
+    <div class="form-group">
+      <label>Enter User Phone</label>
+      <input formControlName="user_phone" class="form-control" placeholder="Enter phone">
+      <label class="alert alert-danger"
+        *ngIf="!user_signup.get('user_phone').pristine && user_signup.get('user_phone').hasError('required')  ">required</label>
+    </div>
+    <div formGroupName="password_group">
+      <div class=" form-group">
+        <label>Enter password</label>
+        <input type="password" formControlName="user_password" class="form-control" placeholder="Enter password">
+        <label class="alert alert-danger"
+          *ngIf="user_signup.get('password_group').get('user_password').hasError('required')">Password is
+          required</label>
+      </div>
+      <div class=" form-group">
+        <label>Enter confirm password</label>
+        <input type="password" formControlName="user_confirm_password" class="form-control"
+          placeholder="Enter confirm password">
+      </div>
+      <label class="alert alert-danger"
+        *ngIf="user_signup.get('password_group').hasError('passwordNotMatched') && !user_signup.get('password_group').pristine ">Password
+        doesn't match</label>
+    </div>
+    <div class="form-group">
+      <button type="button" class="btn btn-info" (click)="onAddHobby()">Add Hobby</button>
+      <div formArrayName="user_hobbies" *ngFor="let item of getHobbies();let i=index">
+        <input class="form-control" [formControlName]="i">
+        <button class="btn btn-danger" (click)="onHobbyRemove(i)">Delete</button>
+      </div>
+    </div>
+    <button type="submit" class="form-control btn btn-primary"> Add User</button>
+  </form>
+</div>
