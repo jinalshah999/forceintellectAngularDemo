@@ -21,6 +21,7 @@ import { PagenotfoundComponent } from "./pagenotfound/pagenotfound.component";
 import { AddtodoComponent } from "./todolist/addtodo/addtodo.component";
 import { EdittodoComponent } from "./todolist/edittodo/edittodo.component";
 import { UserSignupComponent } from "./user-signup/user-signup.component";
+import { EditProductComponent } from './productlist/edit-product/edit-product.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +42,7 @@ import { UserSignupComponent } from "./user-signup/user-signup.component";
     AddtodoComponent,
     EdittodoComponent,
     UserSignupComponent,
+    EditProductComponent,
   ], //c,d,p
   imports: [
     BrowserModule,

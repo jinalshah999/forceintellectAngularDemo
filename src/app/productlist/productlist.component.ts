@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ProductdataService } from "./productdata.service";
 import { Product } from "./product";
 import { DemodataService } from "./demodata.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-productlist",
@@ -14,7 +15,8 @@ export class ProductlistComponent implements OnInit {
   cat_name: String = "Watch";
   constructor(
     private _prodData: ProductdataService,
-    private _demoData: DemodataService
+    private _demoData: DemodataService,
+    private _router: Router
   ) {}
 
   ngOnInit(): void {
@@ -27,4 +29,11 @@ export class ProductlistComponent implements OnInit {
   onMyEvent(val) {
     //this.products = this.products.filter((x) => x.pname.startsWith(val));
   }
+  onEditProduct(item: Product) {
+    this._router.navigate(["/editproduct", item.pro_id]);
+  }
+  // {
+  //   queryParams: { proid: item.pro_id },
+  //   fragment: "loading",
+  // }
 }

@@ -1,0 +1,14 @@
+<p>edit-product works!</p>
+
+<div class="container">
+  <form (ngSubmit)="onEditProduct()" [formGroup]="edit_product">
+    <input class="form-control" formControlName="pro_id">
+    <input class="form-control" formControlName="pro_name">
+    <input class="form-control" formControlName="pro_price">
+    <input class="form-control" formControlName="pro_desc">
+    <input class="form-control" formControlName="pro_qty">
+    <input class="form-control" formControlName="pro_mfg">
+    <input class="form-control" formControlName="pro_img">
+    <button type="submit">Edit Product</button>
+  </form>
+</div>

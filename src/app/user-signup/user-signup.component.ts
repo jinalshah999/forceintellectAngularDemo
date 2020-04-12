@@ -6,6 +6,8 @@ import {
   AbstractControl,
   FormArray,
 } from "@angular/forms";
+import { CheckEmail } from "./checkEmail";
+import { UserdataService } from "../userdata.service";
 
 @Component({
   selector: "app-user-signup",
@@ -15,7 +17,7 @@ import {
 export class UserSignupComponent implements OnInit {
   user_signup: FormGroup;
   invalidNames: string[] = ["abc", "xyz"];
-  constructor() {}
+  constructor(private _userdata: UserdataService) {}
 
   ngOnInit(): void {
     this.user_signup = new FormGroup({
@@ -26,10 +28,11 @@ export class UserSignupComponent implements OnInit {
         this.invalidNamesFun.bind(this),
       ]),
       user_notification: new FormControl("email"),
-      user_email: new FormControl(null, [
-        Validators.required,
-        Validators.email,
-      ]),
+      user_email: new FormControl(
+        null,
+        [Validators.required, Validators.email],
+        CheckEmail.validateEmail(this._userdata)
+      ),
       user_phone: new FormControl(null),
       password_group: new FormGroup(
         {
