@@ -30,7 +30,7 @@ export class ProductlistComponent implements OnInit {
     //this.products = this.products.filter((x) => x.pname.startsWith(val));
   }
   onEditProduct(item: Product) {
-    this._router.navigate(["/editproduct", item.pro_id]);
+    this._router.navigate(["/products/editproduct", item.pro_id]);
   }
   // {
   //   queryParams: { proid: item.pro_id },

@@ -1,24 +1,19 @@
 import { Routes, RouterModule } from "@angular/router";
-import { TodolistComponent } from "./todolist/todolist.component";
-import { EdittodoComponent } from "./todolist/edittodo/edittodo.component";
-import { AddtodoComponent } from "./todolist/addtodo/addtodo.component";
-import { DemoComponent } from "./demo/demo.component";
-import { ProductlistComponent } from "./productlist/productlist.component";
+import { HomeComponent } from "./home/home.component";
 import { PagenotfoundComponent } from "./pagenotfound/pagenotfound.component";
-import { AddproductComponent } from "./productlist/addproduct/addproduct.component";
-import { UserSignupComponent } from "./user-signup/user-signup.component";
-import { EditProductComponent } from "./productlist/edit-product/edit-product.component";
 
 const arr: Routes = [
-  //{path:'',redirectTo:'/home'},
-  { path: "", component: TodolistComponent },
-  { path: "addtodo", component: AddtodoComponent },
-  { path: "edittodo/:id", component: EdittodoComponent },
-  { path: "demo", component: DemoComponent },
-  { path: "products", component: ProductlistComponent },
-  { path: "addproduct", component: AddproductComponent },
-  { path: "editproduct/:id", component: EditProductComponent },
-  { path: "usersignup", component: UserSignupComponent },
+  { path: "", component: HomeComponent }, //localhost:4200
+  {
+    path: "todo", //localhost:4200/todo/addtodo
+    loadChildren: () =>
+      import("./todolist/todo.module").then((x) => x.TodoModule),
+  },
+  {
+    path: "products", //localhost:4200/products/
+    loadChildren: () =>
+      import("./productlist/product.module").then((x) => x.ProductModule),
+  },
   { path: "pagenotfound", component: PagenotfoundComponent },
   { path: "**", redirectTo: "/pagenotfound" },
 ];
