@@ -24,6 +24,8 @@
         <li routerLinkActive="active"><a routerLink="/products">Product</a></li>
         <li routerLinkActive="active"><a routerLink="/products/addproduct">Add Product</a></li>
         <li routerLinkActive="active"><a routerLink="/usersignup">SignUp</a></li>
+        <li routerLinkActive="active" *ngIf="!checkLoggedIn"><a routerLink="/login">Login</a></li>
+        <li routerLinkActive="active" *ngIf="checkLoggedIn"><a (click)="onLogOut()">Log Out</a></li>
       </ul>
 
 

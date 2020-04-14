@@ -14,12 +14,20 @@ export class EditProductComponent implements OnInit {
   id: string;
   qid: string;
   frag: string;
+  currentProduct: Product;
+  originalProduct: Product;
   constructor(
     private _act: ActivatedRoute,
     private _router: Router,
     private _productData: ProductdataService
   ) {}
 
+  get isDirty(): boolean {
+    return (
+      JSON.stringify(this.originalProduct) !=
+      JSON.stringify(this.currentProduct)
+    );
+  }
   ngOnInit(): void {
     this.edit_product = new FormGroup({
       pro_id: new FormControl(null),
@@ -46,6 +54,9 @@ export class EditProductComponent implements OnInit {
 
     // console.log("query params", this.qid);
     //console.log("fragment", this.frag);
+    this.edit_product.valueChanges.subscribe((x) => {
+      this.currentProduct = this.edit_product.value;
+    });
   }
   OnButtonClick() {
     this._router.navigate(["/editproduct", 10]);
@@ -60,6 +71,8 @@ export class EditProductComponent implements OnInit {
   }
 
   assignData(obj: Product) {
+    this.currentProduct = obj;
+    this.originalProduct = obj;
     this.edit_product.patchValue({
       pro_id: obj.pro_id,
       pro_name: obj.pro_name,

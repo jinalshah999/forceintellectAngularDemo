@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import { Todo } from "./todo";
 import { TododataService } from "./tododata.service";
 import { Subscription } from "rxjs";
@@ -12,24 +12,21 @@ import { Subscription } from "rxjs";
 export class TodolistComponent implements OnInit, OnDestroy {
   todos: Todo[] = [];
   sub: Subscription;
-  constructor(private _tododata: TododataService, private _router: Router) {}
+  error: any;
+  constructor(
+    private _tododata: TododataService,
+    private _router: Router,
+    private _actRoutes: ActivatedRoute
+  ) {}
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    //this.sub.unsubscribe();
   }
   ngOnInit(): void {
-    this.sub = this._tododata.getAllTodos().subscribe(
-      (res: Todo[]) => {
-        console.log(res);
-        this.todos = res;
-      },
-      function (error) {
-        console.log(error);
-      },
-      function () {
-        console.log("call is finished");
-      }
-    );
+    let obj = this._actRoutes.snapshot.data["xyz"];
+    this.todos = obj.todo;
+    this.error = obj.error;
+    console.log(obj);
   }
   onDeleteClick(item: Todo): void {
     this._tododata.deleteTodo(item.Id).subscribe(

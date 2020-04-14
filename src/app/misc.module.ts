@@ -10,6 +10,7 @@ import { MessagewraperComponent } from "./messagewraper/messagewraper.component"
 import { DblPipe } from "./dbl.pipe";
 import { UserSignupComponent } from "./user-signup/user-signup.component";
 import { miscRoutingArr } from "./misc.routing";
+import { LoginComponent } from "./login/login.component";
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { miscRoutingArr } from "./misc.routing";
     MessagewraperComponent,
     DblPipe,
     UserSignupComponent,
+    LoginComponent,
   ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule, miscRoutingArr],
 })
