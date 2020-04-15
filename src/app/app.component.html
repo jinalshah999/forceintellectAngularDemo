@@ -34,6 +34,13 @@
   </app-messagewraper> -->
 
 <!-- </div> -->
-<app-header></app-header>
-<router-outlet></router-outlet>
+<div *ngIf="isLoading;else elseBlock">
+  <img src="../assets/1.gif">
+</div>
+<ng-template #elseBlock>
+  <app-header></app-header>
+  <router-outlet></router-outlet>
+
+</ng-template>
+
 <!-- <app-footer></app-footer> -->

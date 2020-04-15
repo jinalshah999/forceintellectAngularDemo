@@ -8,6 +8,13 @@ import {
   QueryList,
 } from "@angular/core";
 import { MessageComponent } from "./message/message.component";
+import {
+  Router,
+  NavigationStart,
+  NavigationCancel,
+  NavigationEnd,
+  NavigationError,
+} from "@angular/router";
 
 @Component({
   selector: "app-root",
@@ -19,11 +26,29 @@ export class AppComponent implements OnInit, AfterViewInit {
   //@ViewChild(MessageComponent) mc: MessageComponent;
   //@ViewChildren(MessageComponent) mcs: QueryList<MessageComponent>;
   arr: string[] = [];
-  constructor(private cd: ChangeDetectorRef) {}
-
+  constructor(private cd: ChangeDetectorRef, private _router: Router) {
+    this.checkRoutes(this._router);
+  }
+  isLoading: boolean = false;
   ngOnInit() {
     this.arr = this.getMessages();
   }
+
+  checkRoutes(_router: Router) {
+    _router.events.subscribe((x) => {
+      if (x instanceof NavigationStart) {
+        this.isLoading = true;
+      }
+      if (
+        x instanceof NavigationCancel ||
+        x instanceof NavigationEnd ||
+        x instanceof NavigationError
+      ) {
+        this.isLoading = false;
+      }
+    });
+  }
+
   ngAfterViewInit() {}
   // ngAfterViewInit() {
   //   console.log(this.mcs);
