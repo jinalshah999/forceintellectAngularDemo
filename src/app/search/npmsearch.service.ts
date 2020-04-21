@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Observable, of, throwError } from "rxjs";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
-import { map, tap, catchError } from "rxjs/operators";
+import { map, tap, catchError, retry, take } from "rxjs/operators";
 
 export interface NpmPackageInfo {
   name: string;
@@ -23,6 +23,7 @@ export class NpmsearchService {
       return of([]);
     }
     return this._http.get(this.url + searchTerm).pipe(
+      retry(3),
       map((data: any) => {
         return data.results.map(
           (x) =>
@@ -34,6 +35,7 @@ export class NpmsearchService {
         );
       }),
       tap((x) => console.log("from service", x)),
+      take(1),
       catchError(this.handleError)
     );
   }

@@ -5,7 +5,7 @@ import {
   OnDestroy,
   ChangeDetectorRef,
 } from "@angular/core";
-import { Subject, Observable, Subscription } from "rxjs";
+import { Subject, Observable, Subscription, EMPTY } from "rxjs";
 import { NpmPackageInfo, NpmsearchService } from "./npmsearch.service";
 import {
   tap,
@@ -36,7 +36,11 @@ export class SearchComponent implements OnInit {
     this.packages = this.search_subject.pipe(
       debounceTime(1000),
       distinctUntilChanged(),
-      switchMap((x) => this._searchData.search(x))
+      switchMap((x) => this._searchData.search(x)),
+      catchError((err) => {
+        this.errorMessage = err;
+        return EMPTY;
+      })
     );
   }
   search(serchTerm: string) {
