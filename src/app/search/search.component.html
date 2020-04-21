@@ -1,0 +1,14 @@
+<h1>Search NPM Directory</h1>
+
+<input placeholder="Search" class="form-control" (keyup)="search($event.target.value)">
+
+<ul>
+  <li *ngFor="let item of packages |async">
+    <b>{{item.name}} v. {{item.version}} </b>
+    <i>{{item.description}}</i>
+  </li>
+</ul>
+
+<div class="alert alert-danger">
+  <p>{{errorMessage}}</p>
+</div>

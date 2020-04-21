@@ -3,6 +3,7 @@ import { ProductdataService } from "./productdata.service";
 import { Product } from "./product";
 import { DemodataService } from "./demodata.service";
 import { Router } from "@angular/router";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-productlist",
@@ -21,6 +22,7 @@ export class ProductlistComponent implements OnInit {
 
   ngOnInit(): void {
     //this.products = this._prodData.getAllProducts();
+
     this._prodData.getAllProducts().subscribe((res) => {
       this.products = res;
     });

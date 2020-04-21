@@ -7,7 +7,7 @@ import {
 } from "@angular/common/http";
 import { CachedataService } from "./cachedata.service";
 import { of } from "rxjs";
-import { tap } from "rxjs/operators";
+import { tap, catchError } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root",

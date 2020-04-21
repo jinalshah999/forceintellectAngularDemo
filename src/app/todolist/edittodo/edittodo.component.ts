@@ -20,7 +20,14 @@ export class EdittodoComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.Id = this._actroute.snapshot.params["id"];
+    //this.Id = this._actroute.snapshot.params["id"];
+    this._actroute.params.subscribe((x) => {
+      this.Id = x.id;
+      console.log(x);
+    });
+
+    let qid = this._actroute.snapshot.queryParams["id"];
+    let frag = this._actroute.snapshot.fragment;
     this._tododata.getTodoById(this.Id).subscribe((res) => {
       this.Title = res[0].Title;
       this.Status = res[0].Status;
@@ -31,5 +38,8 @@ export class EdittodoComponent implements OnInit {
     this._tododata.editTodo(obj).subscribe((res: any) => {
       this._router.navigate(["/"]);
     });
+  }
+  onClick() {
+    this._router.navigate(["/todo/edittodo", 1010]);
   }
 }

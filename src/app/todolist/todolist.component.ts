@@ -46,6 +46,9 @@ export class TodolistComponent implements OnInit, OnDestroy {
   }
   onEditClick(item: Todo): void {
     console.log(item);
-    this._router.navigate(["/todo/edittodo", item.Id]);
+    this._router.navigate(["/todo/edittodo", item.Id], {
+      queryParams: { id: item.Id },
+      fragment: "loading",
+    });
   }
 }

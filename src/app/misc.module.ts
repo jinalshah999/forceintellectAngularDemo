@@ -11,7 +11,9 @@ import { DblPipe } from "./dbl.pipe";
 import { UserSignupComponent } from "./user-signup/user-signup.component";
 import { miscRoutingArr } from "./misc.routing";
 import { LoginComponent } from "./login/login.component";
-import { ForDemoComponent } from './for-demo/for-demo.component';
+import { ForDemoComponent } from "./for-demo/for-demo.component";
+import { SearchComponent } from './search/search.component';
+import { DemotaskComponent } from './demotask/demotask.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { ForDemoComponent } from './for-demo/for-demo.component';
     UserSignupComponent,
     LoginComponent,
     ForDemoComponent,
+    SearchComponent,
+    DemotaskComponent,
   ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule, miscRoutingArr],
 })
